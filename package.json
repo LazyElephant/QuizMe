@@ -1,0 +1,30 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha --recursive",
+    "test:watch": "npm run test -- --watch",
+    "start:dev": "nodemon ./server/server.js"
+  },
+  "author": "Timothy Schmidt",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.16.0",
+    "express": "^4.14.0",
+    "express-session": "^1.15.1",
+    "mongoose": "^4.7.7",
+    "morgan": "^1.7.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "pug": "^2.0.0-beta11"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "css-loader": "^0.28.1",
+    "file-loader": "^0.11.1",
+    "mocha": "^3.2.0"
+  }
+}

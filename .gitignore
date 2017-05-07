@@ -1,0 +1,5 @@
+# All external dependencies
+node_modules
+
+# Git repository files
+.git
