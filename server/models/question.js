@@ -2,15 +2,11 @@
 
 const mongoose = require('mongoose');
 
-const answerSchema = new mongoose.Schema({
-    language: { type: String, required: true, index: true },
-    true: [{type: String, required: true}],
-    false: [{type: String, required: true}],
-});
-
 const questionSchema = new mongoose.Schema({
+    topic: { type: String, required: true, index: true },
     question: { type:String, required: true, minLength: 10 },
-    answers: [answerSchema],
+    answers: [{type: String, required: true}],
+    nonAnswers: [{type: String, required: true}],
 });
 
-module.exports = mongoose.Model("Question", questionSchema);
+module.exports = mongoose.model("Question", questionSchema);
