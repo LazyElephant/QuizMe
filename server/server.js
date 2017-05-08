@@ -1,50 +1,27 @@
 "use strict";
-// load secrets
-const secrets = require( './config/secrets');
-// load external dependencies
-const path = require( 'path');
-const express = require( 'express');
-const session = require( 'express-session');
-const logger = require( 'morgan');
-const bodyParser = require( 'body-parser');
-const passport = require( 'passport');
-// const routes
-const homeRouter = require('./routes/home');
 
-// require database connection
+const secrets = require( './config/secrets');
+const {join} = require( 'path');
+const express = require( 'express');
+const bodyParser = require( 'body-parser');
+const cors = require('cors');
+
 require( './config/db');
 
-//create the server
 const app = module.exports = express();
-
-// set view engine to pug
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
-
-// add console logging of request information
-app.use(logger('dev'));
-
-// parse json requests and add fields to the request
-app.use(bodyParser.urlencoded({extended: true}));
+// disable cors when no longer necessary
+app.use(cors());
+app.use(express.static( join(__dirname, "public") ));
 app.use(bodyParser.json());
-
-// set public path and set cache time to one day
-app.use(express.static(path.join(__dirname, "/public") /*, { maxAge: 86400000}*/));
-
-// add session support
-app.use(session({ secret: secrets.SESSION_SECRET, resave: false, saveUninitialized: false }));
-// add passport
-app.use(passport.initialize());
-app.use(passport.session());
-// add routes
-app.use('/', homeRouter);
-
-// catch all others in 404
-app.use( (req, res, done) => {
-    res.status(404).json({error: 404});
+app.get('/', (req, res) => { res.status(200).sendFile( join(__dirname, 'public', 'index.html'));});
+app.get('/api/questions', (req, res) => { 
+    res.json({
+        topic: "C++",
+        question: "Which variable initialization causes a compiler error if var2 is a larger data type?",
+        answers: ["int var1 = var2", "int var1{ var2 }"]
+    });
 });
 
-// start the server
 app.listen(secrets.PORT, () => {
     console.log("Server listening on", secrets.PORT);
 });
