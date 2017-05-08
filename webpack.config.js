@@ -18,13 +18,8 @@ module.exports = {
 
   devServer: {
     hot: true,
-    // enable HMR on the server
-
     contentBase: resolve(__dirname, 'server', 'public'),
-    // match the output path
-
     publicPath: '/'
-    // match the output `publicPath`
   },
 
   module: {
@@ -34,10 +29,6 @@ module.exports = {
         use: [ 'babel-loader', ],
         exclude: /node_modules/
       },
-    //   {
-    //     test: /\.css$/,
-    //     use: [ 'style-loader', 'css-loader?modules', ],
-    //   },
     ],
   },
 
