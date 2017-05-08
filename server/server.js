@@ -26,9 +26,10 @@ app.use(logger('dev'));
 
 // parse json requests and add fields to the request
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
 // set public path and set cache time to one day
-app.use(express.static(path.join(__dirname, "/assets") /*, { maxAge: 86400000}*/));
+app.use(express.static(path.join(__dirname, "/public") /*, { maxAge: 86400000}*/));
 
 // add session support
 app.use(session({ secret: secrets.SESSION_SECRET, resave: false, saveUninitialized: false }));
@@ -40,7 +41,7 @@ app.use('/', homeRouter);
 
 // catch all others in 404
 app.use( (req, res, done) => {
-    res.status(404).render('errors/404.pug');
+    res.status(404).json({error: 404});
 });
 
 // start the server
