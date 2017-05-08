@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha --recursive",
     "test:watch": "npm run test -- --watch",
-    "start:dev": "nodemon ./server/server.js"
+    "start": "nodemon ./server/server.js"
   },
   "author": "Timothy Schmidt",
   "license": "ISC",
@@ -23,8 +23,6 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
-    "css-loader": "^0.28.1",
-    "file-loader": "^0.11.1",
     "mocha": "^3.2.0"
   }
 }
