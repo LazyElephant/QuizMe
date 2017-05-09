@@ -1,6 +1,12 @@
+:root {
+    --defaultPadding: 30px;
+}
+
 body {
     margin: 0;
     overflow-x: hidden;
+    background: radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgba(0,0,0,.7) 100%);
+    /*radial-gradient( ellipse at 50% 50%, hsl(200, 100%, 40%), lightblue);*/
 }
 
 .wrapper {
@@ -13,13 +19,32 @@ body {
     align-items: center;
 }
 
-.card{
+.card {
     box-shadow: 0 0 7px -1px black;
     width: 90%;
     max-width: 900px;
     
-    padding: 30px;
+    display: flex;
     margin: auto;
+}
+
+.topic {
+    background: orangered;
+    color: goldenrod;
+    flex: 0;
+    font-size: 4em;
+    padding: var(--defaultPadding);
+    text-shadow: -1px 1px 3px black; 
+}
+
+.topic p {
+    transform: rotate(-90deg);
+}
+
+.question {
+    background: white;
+    flex: 1;
+    padding: var(--defaultPadding);
 }
 
 footer {
