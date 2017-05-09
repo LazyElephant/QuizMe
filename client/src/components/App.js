@@ -21,25 +21,23 @@ import Footer from './Footer'
 export default class App extends React.Component{
     constructor(props, context) {
       super(props,context);
-      this.state = { question: null };
+      this.state = { questions: [] };
     }
     
-    componentDidMount() {
-      fetch('http://localhost:3000/api/questions')
-        .then( (response) => response.json() )
-        .then( (jsonResponse) => {
-          console.log(jsonResponse);
-          this.setState({
-            question: jsonResponse
-          });
-        });
+    async componentDidMount() {
+      const response = await fetch('http://localhost:3000/api/questions');
+      const jsonResponse = await response.json();
+        
+      console.log(jsonResponse);
+      this.setState({
+        questions: jsonResponse.questions
+      });
     }
 
     render() {
         return (
           <div className="wrapper">
-            <QuestionCard question={this.state.question}/>
-            <Footer/>
+            <QuestionCard question={this.state.questions[0]}/>
           </div>
     );
   }
