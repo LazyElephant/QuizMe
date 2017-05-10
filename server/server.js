@@ -15,11 +15,11 @@ app.use(express.static( join(__dirname, "public") ));
 app.use(bodyParser.json());
 app.get('/', (req, res) => { res.status(200).sendFile( join(__dirname, 'public', 'index.html'));});
 app.get('/api/questions', (req, res) => { 
-    res.json({
+    res.status(200).json({
         questions: [{
             topic: "C++",
             question: "Which variable initialization causes a compiler error if var2 is a larger data type?",
-            answers: ["int var1 = var2", "int var1{ var2 }"]
+            answers: [{text: "int var1 = var2", correct: false}, {text:"int var1{ var2 }", correct: true}]
         }]
     });
 });
