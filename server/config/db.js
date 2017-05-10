@@ -2,7 +2,6 @@
 
 const secrets = require('./secrets');
 const mongoose = require('mongoose');
-const User = require('../models/user');
 // replace the deprecated mongoose promise
 mongoose.Promise = global.Promise;
 // create a mongodb connection with mongoose
