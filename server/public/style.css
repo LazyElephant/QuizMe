@@ -1,16 +1,13 @@
 :root {
-    --defaultPadding: 30px;
+    --padding: 30px;
     --textShadow: 1px 1px 2px black;
-}
-
-* {
-    transition: all 0.2s ease-in-out;
+    --transition: all 0.2s ease-in-out;
 }
 
 body {
     margin: 0;
     overflow-x: hidden;
-    background: radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgba(0,0,0,.7) 100%);
+    background: radial-gradient(ellipse at center, orangered 0%, rgba(0,69,255,.3) 100%);
     /*radial-gradient( ellipse at 50% 50%, hsl(200, 100%, 40%), lightblue);*/
 }
 
@@ -24,19 +21,20 @@ ul {
     padding: 0;
     margin: 0;
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .card {
     box-shadow: 0 0 7px -1px black;
     width: 90%;
     max-width: 900px;
-    position: relative;
+    position: absolute;
     display: flex;
     margin: auto;
     opacity: 0;
     pointer-events: none;
+    transition: var(--transition);
 }
 
 .card.active {
@@ -45,7 +43,19 @@ ul {
 }
 
 .card.done {
-    transform: translateX(-25%), rotate(-540deg);
+    transform-origin: 0 50%;
+    animation: fly-away 0.5s ease-in;
+}
+
+@keyframes fly-away {
+    from {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 1;
+    }
+    to {
+        transform: translate(-50vw, 0) rotate(-360deg);
+        opacity: 0;
+    }
 }
 
 .topic {
@@ -53,7 +63,7 @@ ul {
     color: goldenrod;
     flex: 0;
     font-size: 4em;
-    padding: var(--defaultPadding);
+    padding: var(--padding);
     text-shadow: var(--textShadow);
 }
 
@@ -66,12 +76,14 @@ ul {
     display: flex;
     flex-direction: column;
     flex: 1;
-    padding: var(--defaultPadding);
+    padding: var(--padding);
 }
 
 .answer-item {
-    padding: 10px var(--defaultPadding);
+    padding: 10px var(--padding);
+    cursor: default;
     list-style: none;
+    transition: var(--transition);
 }
 
 .answer-item:hover {
@@ -93,4 +105,14 @@ ul {
 }
 footer {
     height: 50px;
+}
+
+@media only screen and (max-width: 500px) {
+    .card {
+        flex-direction: column;
+    }
+    .topic p {
+        margin: 0;
+        transform: rotate(0);
+    }
 }

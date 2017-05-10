@@ -3,15 +3,13 @@ import Card from './Card'
 
 export default class QuestionCard extends React.Component {
     render() {
-        return ( this.props.question != null ? 
-                    <Card className={this.props.className}>
-                        <Topic {...this.props.question} />
-                        <Question {...this.props.question} onSubmit={this.props.onSubmit}/>
-                    </Card>
-                    : 
-                    <Card>
-                        <p>loading...</p>
-                    </Card>
+        return ( 
+            <Card className={this.props.className}>
+                <Topic {...this.props.question} />
+                <Question 
+                    {...this.props.question} 
+                    handleSubmit={this.props.handleSubmit}/>
+            </Card>
         );
     }
 }
@@ -22,22 +20,27 @@ const Topic = ({topic}) =>
     </div>
 
 
-const Question = ({question, answers, onSubmit}) => 
-    <div className="question">
-        <h3>{question}</h3>
-        <ul>
-            {
-                answers.map( (answer, index) => 
-                    <li 
-                        className="answer-item"
-                        onClick={() => { this._button.disabled = !answer.correct; }}
-                        key={`${index}`}>{`${index+1}. ${answer.text}`}
-                    </li>)
-            }
-        </ul>
-        <button disabled
-            className="submit"
-            ref={ ref => this._button = ref }
-            onSubmit={onSubmit}>Next
-        </button>
-    </div>
+class Question extends React.Component {
+
+    render() {
+        return (
+        <div className="question">
+            <h3>{this.props.question}</h3>
+            <ul>
+                {
+                    this.props.answers.map( (answer, index) => 
+                        <li 
+                            className="answer-item"
+                            key={`${index}`}>{`${index+1}. ${answer.text}`}
+                        </li>)
+                }
+            </ul>
+            <button
+                className="submit"
+                ref={ ref => this._button = ref }
+                onClick={this.props.handleSubmit}>Next
+            </button>
+        </div>
+        );
+    }
+}
