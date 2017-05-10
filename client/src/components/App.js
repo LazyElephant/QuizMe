@@ -17,7 +17,7 @@ export default class App extends React.Component{
     }
 
     async loadCards() {
-      const response = await fetch('http://localhost:3000/api/questions');
+      const response = await fetch('/api/questions');
       const jsonResponse = await response.json();
 
       this.setState({
