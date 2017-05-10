@@ -1,5 +1,10 @@
 :root {
     --defaultPadding: 30px;
+    --textShadow: 1px 1px 2px black;
+}
+
+* {
+    transition: all 0.2s ease-in-out;
 }
 
 body {
@@ -7,6 +12,10 @@ body {
     overflow-x: hidden;
     background: radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgba(0,0,0,.7) 100%);
     /*radial-gradient( ellipse at 50% 50%, hsl(200, 100%, 40%), lightblue);*/
+}
+
+ul {
+    padding-left: 0;
 }
 
 .wrapper {
@@ -23,9 +32,20 @@ body {
     box-shadow: 0 0 7px -1px black;
     width: 90%;
     max-width: 900px;
-    
+    position: relative;
     display: flex;
     margin: auto;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.card.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.card.done {
+    transform: translateX(-25%), rotate(-540deg);
 }
 
 .topic {
@@ -34,7 +54,7 @@ body {
     flex: 0;
     font-size: 4em;
     padding: var(--defaultPadding);
-    text-shadow: -1px 1px 3px black; 
+    text-shadow: var(--textShadow);
 }
 
 .topic p {
@@ -43,10 +63,34 @@ body {
 
 .question {
     background: white;
+    display: flex;
+    flex-direction: column;
     flex: 1;
     padding: var(--defaultPadding);
 }
 
+.answer-item {
+    padding: 10px var(--defaultPadding);
+    list-style: none;
+}
+
+.answer-item:hover {
+    background: orangered;
+    color: white;
+    text-shadow: 1p
+}
+
+.question > .submit {
+    background: orangered;
+    padding: 10px;
+    color: white;
+    text-shadow: var(--textShadow);
+    align-self: flex-end;
+}
+
+.question > .submit:disabled {
+    filter: blur(5px);
+}
 footer {
     height: 50px;
 }
