@@ -10,7 +10,7 @@ const questionSchema = new mongoose.Schema({
 });
 
 // format documents for consumption by react app
-questionSchema.statics.formatAll = (questions) => return questions.map( format );
+questionSchema.statics.formatAll = (questions) => questions.map( format );
 
 questionSchema.statics.format = format;
 
