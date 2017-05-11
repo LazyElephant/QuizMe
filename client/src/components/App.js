@@ -51,7 +51,8 @@ export default class App extends React.Component{
                 return <QuestionCard 
                   handleSubmit={this.handleSubmit.bind(this)}
                   className={this.getClass(index)}
-                  question={question}/>
+                  question={question}
+                  key={`card-${index}`}/>
               })}
           </div>
     );

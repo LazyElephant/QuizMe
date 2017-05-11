@@ -26,6 +26,12 @@ class Question extends React.Component {
         return (
         <div className="question">
             <h3>{this.props.question}</h3>
+            {
+                // TODO: update the answers section to display differently based on type of question
+                // probably refactor to a separate component
+                // make it possible for the component to determine when the right answer is provided
+                // eg. short answer text matches answer, correct options selected in multiple choice/multiple answer
+            }
             <ul>
                 {
                     this.props.answers.map( (answer, index) => 
