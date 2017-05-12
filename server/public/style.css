@@ -49,11 +49,11 @@ ul {
 
 @keyframes fly-away {
     from {
-        transform: translate(0, 0) rotate(0deg);
+        transform: translate(0, 0) rotate(0deg) scale(1);
         opacity: 1;
     }
     to {
-        transform: translate(-50vw, 0) rotate(-360deg);
+        transform: translate(-50vw, 0) rotate(-360deg) scale(0);
         opacity: 0;
     }
 }
@@ -86,7 +86,7 @@ ul {
     transition: var(--transition);
 }
 
-.answer-item:hover {
+.answer-item.checked {
     background: orangered;
     color: white;
     text-shadow: 1p
