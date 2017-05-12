@@ -5,9 +5,9 @@ module.exports = {
     context: resolve(__dirname, 'client', 'src'),
     entry: [
         'babel-polyfill',
-        // 'react-hot-loader/patch',
-        // 'webpack-dev-server/client?http://localhost:8080',
-        // 'webpack/hot/only-dev-server',
+        'react-hot-loader/patch',
+        'webpack-dev-server/client?http://localhost:8080',
+        'webpack/hot/only-dev-server',
         './index.js'
     ],
     output: {
@@ -17,11 +17,11 @@ module.exports = {
     },
     devtool: 'inline-source-map',
 
-  // devServer: {
-  //   hot: true,
-  //   contentBase: resolve(__dirname, 'server', 'public'),
-  //   publicPath: '/'
-  // },
+  devServer: {
+    hot: true,
+    contentBase: resolve(__dirname, 'server', 'public'),
+    publicPath: '/'
+  },
 
   module: {
     rules: [
@@ -33,11 +33,11 @@ module.exports = {
     ],
   },
 
-  // plugins: [
-  //   new webpack.HotModuleReplacementPlugin(),
-  //   // enable HMR globally
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    // enable HMR globally
 
-  //   new webpack.NamedModulesPlugin(),
-  //   // prints more readable module names in the browser console on HMR updates
-  // ],
+    new webpack.NamedModulesPlugin(),
+    // prints more readable module names in the browser console on HMR updates
+  ],
 };
