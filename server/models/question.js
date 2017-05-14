@@ -22,7 +22,6 @@ questionSchema.pre('save', function(next) {
             this.choices.splice( index, 0, this.answers[i]);
         }
     }
-    console.log(this.choices);
     next();
 });
 

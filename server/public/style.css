@@ -83,10 +83,9 @@ ul {
     padding: 10px var(--padding);
     cursor: default;
     list-style: none;
-    transition: var(--transition);
 }
 
-.answer-item.checked {
+.answer-item[data-checked="true"] {
     background: orangered;
     color: white;
     text-shadow: 1p
