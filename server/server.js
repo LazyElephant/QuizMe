@@ -8,7 +8,7 @@ const Question = require('./models/question');
 require( './config/db');
 
 const app = module.exports = express();
-app.use(cors());
+
 app.use(express.static( join(__dirname, "public") ));
 app.use(bodyParser.json());
 app.get('/', (req, res) => { res.status(200).sendFile( join(__dirname, 'public', 'index.html'));});
