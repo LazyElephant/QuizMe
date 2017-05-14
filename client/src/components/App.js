@@ -17,13 +17,21 @@ export default class App extends React.Component{
     }
 
     async loadCards() {
-      const response = await fetch('/api/questions');
-      const jsonResponse = await response.json();
+      fetch('/api/questions')
+        .then(response => response.json())
+        .then(jsonResponse => {
+          this.setState({
+            questions: jsonResponse,
+            currentCard: 0
+          });
+        })
+        .catch(err => console.log(err));
+      // const jsonResponse = await response.json();
 
-      this.setState({
-        questions: jsonResponse,
-        currentCard: 0
-      });
+      // this.setState({
+      //   questions: jsonResponse,
+      //   currentCard: 0
+      // });
     }
 
     handleSubmit() {

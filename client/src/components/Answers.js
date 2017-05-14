@@ -1,27 +1,7 @@
 import React from 'react';
 
-// export default class Answers extends React.Component {
-//     constructor(props) {
-//         super(props);
-
-//         this.answerTypes = {
-//             "multiple-choice": MultipleChoice,
-//             "multiple-answer": MultipleAnswer,
-//             "short-answer": ShortAnswer
-//         };
-//     }
-//     isCorrect() {
-//         return true;
-//     }
-
-//     render() {
-//         return <this.answerTypes[this.props.type] {...this.props} />;
-//     }
-// }
-
 export class ShortAnswer extends React.Component {
     isCorrect() {
-        console.log(this.answerRef.value);
         if (this.answerRef.value === this.props.answers[0]) return true;
 
         return false;
@@ -33,6 +13,7 @@ export class ShortAnswer extends React.Component {
         );
     }
 }
+
 export class MultipleChoice extends React.Component {
     constructor(props) {
         super(props);
@@ -41,11 +22,12 @@ export class MultipleChoice extends React.Component {
     }
 
     isCorrect() {
-        // check that all 
+        // check that all answers are checked
         for (let answer of this.props.answers) {
             
             if(undefined === this.answerRefs.find( el => el.dataset.text === answer && el.dataset.checked === "true")) return false;
         }
+        // make sure only the correct answers are checked
         let numChecked = 0;
 
         for(let el of this.answerRefs) {
@@ -84,6 +66,4 @@ export class MultipleChoice extends React.Component {
         );
     }
 }
-
-export const MultipleAnswer = MultipleChoice; 
 
