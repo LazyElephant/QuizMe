@@ -5,11 +5,10 @@ const {join} = require( 'path');
 const express = require( 'express');
 const bodyParser = require( 'body-parser');
 const Question = require('./models/question');
-const cors = require('cors');
 require( './config/db');
 
 const app = module.exports = express();
-app.use(cors());
+
 app.use(express.static( join(__dirname, "public") ));
 app.use(bodyParser.json());
 app.get('/', (req, res) => { res.status(200).sendFile( join(__dirname, 'public', 'index.html'));});

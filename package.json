@@ -6,9 +6,12 @@
   "scripts": {
     "test": "mocha --recursive",
     "test:watch": "npm run test -- --watch",
-    "start:dev": "nodemon ./server/server.js",
-    "start": "node ./server/server.js",
-    "build": "webpack --config webpack.production.config.js",
+    "start:dev": "nodemon -w server server/server.js --exec babel-node",
+    "start": "node ./dist/server.js",
+    "watch:server": "npm run build:server -- --watch",
+    "watch:dist": "nodemon -w dist dist/server.js",
+    "build:server": "babel server --presets env --ignore server/public/bundle.js --out-dir dist",
+    "build:client": "webpack --config webpack.production.config.js",
     "devServer": "webpack-dev-server"
   },
   "author": "Timothy Schmidt",
