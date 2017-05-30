@@ -82,12 +82,10 @@ ul {
 .answer-item {
     padding: 10px var(--padding);
     cursor: default;
-    list-style: none;
 }
 
 .answer-item[data-checked="true"] {
     background: orangered;
-    color: white;
     text-shadow: 1p
 }
 
