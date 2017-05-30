@@ -2,7 +2,7 @@ import React from 'react';
 
 export class ShortAnswer extends React.Component {
     isCorrect() {
-        if (this.answerRef.value === this.props.answers[0]) return true;
+        if (this.props.answers.includes(this.answerRef.value)) return true;
 
         return false;
     }
