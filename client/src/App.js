@@ -1,7 +1,28 @@
+/*import React, { Component } from 'react';
+import logo from './logo.svg';
+import './App.css';
+
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <div className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <h2>Welcome to React</h2>
+        </div>
+        <p className="App-intro">
+          To get started, edit <code>src/App.js</code> and save to reload.
+        </p>
+      </div>
+    );
+  }
+}
+
+export default App;*/
+
 import React from 'react'
 
-import QuestionCard from './QuestionCard'
-import Footer from './Footer'
+import QuestionCard from './components/QuestionCard'
 
 export default class App extends React.Component{
     constructor(props, context) {
@@ -60,7 +81,7 @@ export default class App extends React.Component{
                   handleSubmit={this.handleSubmit.bind(this)}
                   className={this.getClass(index)}
                   question={question}
-                  key={`card-${index}`}/>
+                  key={question._id}/>
               })}
           </div>
     );

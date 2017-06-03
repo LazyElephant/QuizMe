@@ -4,9 +4,6 @@ import marked from 'marked';
 import {MultipleChoice, ShortAnswer} from './Answers';
 
 export default class QuestionCard extends React.Component {
-    constructor(props) {
-        super(props)
-    }
 
     checkAnswers() {
         if( this.answerComponent.isCorrect() )
