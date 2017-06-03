@@ -4,20 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-<<<<<<< HEAD
-    "test": "mocha --recursive",
-    "test:watch": "npm run test -- --watch",
-    "start:dev": "nodemon -w server server/server.js --exec babel-node",
-    "start": "node ./dist/server.js",
-    "watch:server": "npm run build:server -- --watch",
-    "watch:dist": "nodemon -w dist dist/server.js",
-    "build:server": "babel server --presets env --ignore server/public/bundle.js --out-dir dist",
-    "build:client": "webpack --config webpack.production.config.js",
-    "devServer": "webpack-dev-server"
-=======
     "start:dev": "nodemon ./bin/www",
     "start": "node ./bin/www"
->>>>>>> 33ee917659b830e605a3d9e704c7c7338468e925
   },
   "author": "Timothy Schmidt",
   "license": "ISC",
