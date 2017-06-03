@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+<<<<<<< HEAD
     "test": "mocha --recursive",
     "test:watch": "npm run test -- --watch",
     "start:dev": "nodemon -w server server/server.js --exec babel-node",
@@ -13,27 +14,22 @@
     "build:server": "babel server --presets env --ignore server/public/bundle.js --out-dir dist",
     "build:client": "webpack --config webpack.production.config.js",
     "devServer": "webpack-dev-server"
+=======
+    "start:dev": "nodemon ./bin/www",
+    "start": "node ./bin/www"
+>>>>>>> 33ee917659b830e605a3d9e704c7c7338468e925
   },
   "author": "Timothy Schmidt",
   "license": "ISC",
   "dependencies": {
-    "babel-polyfill": "^6.23.0",
     "body-parser": "^1.16.0",
     "express": "^4.14.0",
     "mongoose": "^4.7.7",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "morgan": "^1.8.2"
   },
   "devDependencies": {
-    "babel-core": "^6.24.1",
-    "babel-loader": "^7.0.0",
-    "babel-preset-env": "^1.4.0",
-    "babel-preset-react": "^6.24.1",
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
-    "mocha": "^3.2.0",
-    "react-hot-loader": "^3.0.0-beta.7",
-    "webpack": "^2.5.1",
-    "webpack-dev-server": "^2.4.5"
+    "mocha": "^3.2.0"
   }
 }

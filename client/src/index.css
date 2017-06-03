@@ -1,3 +1,10 @@
+/*
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+*/
 :root {
     --padding: 30px;
     --textShadow: 1px 1px 2px black;
@@ -82,12 +89,10 @@ ul {
 .answer-item {
     padding: 10px var(--padding);
     cursor: default;
-    list-style: none;
 }
 
 .answer-item[data-checked="true"] {
     background: orangered;
-    color: white;
     text-shadow: 1p
 }
 

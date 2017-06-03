@@ -1,8 +1,9 @@
 import React from 'react';
+import marked from 'marked';
 
 export class ShortAnswer extends React.Component {
     isCorrect() {
-        if (this.answerRef.value === this.props.answers[0]) return true;
+        if (this.props.answers.includes(this.answerRef.value)) return true;
 
         return false;
     }
@@ -50,7 +51,7 @@ export class MultipleChoice extends React.Component {
 
     render() {
         return (
-            <ul>
+            <ol className="answer-list">
                 {
                     this.props.choices.map( (choice, index) => 
                         <li 
@@ -59,10 +60,11 @@ export class MultipleChoice extends React.Component {
                             data-checked="false"
                             onClick={this.handleClick}
                             ref={(ref)=>this.answerRefs[index] = ref}
-                            key={`${index}`}>{`${index+1}. ${choice}`}
+                            key={`${index}`}
+                            dangerouslySetInnerHTML={{__html:marked.inlineLexer(choice,[])}}>
                         </li>)
                 }
-            </ul>
+            </ol>
         );
     }
 }
