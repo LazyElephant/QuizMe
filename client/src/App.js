@@ -47,12 +47,6 @@ export default class App extends React.Component{
           });
         })
         .catch(err => console.log(err));
-      // const jsonResponse = await response.json();
-
-      // this.setState({
-      //   questions: jsonResponse,
-      //   currentCard: 0
-      // });
     }
 
     handleSubmit() {
