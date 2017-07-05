@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-import QuestionCard from './components/QuestionCard'
+import {getCards} from '../helpers/data-access';
+import QuestionCard from './QuestionCard';
 
 export default class App extends Component{
     constructor(props, context) {
@@ -12,19 +13,10 @@ export default class App extends Component{
     }
     
     componentDidMount() {
-      this.loadCards();
-    }
-
-    loadCards() {
-      fetch('/api/questions')
-        .then(response => response.json())
-        .then(jsonResponse => {
-          this.setState({
-            questions: jsonResponse,
-            currentCard: 0
-          });
-        })
-        .catch(err => console.log(err));
+      const questions = getCards(10);
+      this.setState({
+        questions
+      });
     }
 
     handleSubmit() {
