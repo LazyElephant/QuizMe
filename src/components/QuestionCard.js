@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from './containers/Card';
+import Card from 'material-ui/Card';
 import marked from 'marked';
 import {MultipleChoice, ShortAnswer} from './Answers';
 
@@ -19,7 +19,7 @@ export default class QuestionCard extends React.Component {
         const { question, className } = this.props;
         let text = marked(`### ${question.text}`, {sanitized: true});
         return (
-            <Card className={className}>
+            <Card className={["Card", className].join(' ')}>
                 <div className="topic">
                     <p>{question.topic}</p>
                 </div>
