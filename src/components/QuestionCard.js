@@ -1,10 +1,14 @@
 import React from 'react';
-import Card from './Card';
+import Card from './containers/Card';
 import marked from 'marked';
 import {MultipleChoice, ShortAnswer} from './Answers';
 
 export default class QuestionCard extends React.Component {
+    constructor(props) {
+        super(props);
 
+        this.checkAnswers = this.checkAnswers.bind(this);
+    }
     checkAnswers() {
         if( this.answerComponent.isCorrect() )
             this.props.handleSubmit();
@@ -12,22 +16,23 @@ export default class QuestionCard extends React.Component {
 
 
     render() {
-        let question = marked(`### ${this.props.question.question}`, {sanitized: true});
+        const { question, className } = this.props;
+        let text = marked(`### ${question.text}`, {sanitized: true});
         return (
-            <Card className={this.props.className}>
+            <Card className={className}>
                 <div className="topic">
-                    <p>{this.props.question.topic}</p>
+                    <p>{question.topic}</p>
                 </div>
                 <div className="question">
-                    <div dangerouslySetInnerHTML={{ __html:question}}></div>
+                    <div dangerouslySetInnerHTML={{ __html:text}}></div>
                     {   
-                        this.props.question.type === "short-answer" ?
-                            <ShortAnswer {...this.props.question} ref={ref=>this.answerComponent=ref}/> :
-                            <MultipleChoice {...this.props.question} ref={ref=>this.answerComponent=ref}/>
+                        question.type === "short-answer" ?
+                            <ShortAnswer {...question} ref={ref=>this.answerComponent=ref}/> :
+                            <MultipleChoice {...question} ref={ref=>this.answerComponent=ref}/>
                     }
                     <button
                         className="submit"
-                        onClick={this.checkAnswers.bind(this)}>Next
+                        onClick={this.checkAnswers}>Next
                     </button>
                 </div>
             </Card>
