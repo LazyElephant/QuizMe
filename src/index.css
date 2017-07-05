@@ -8,11 +8,16 @@ body {
 :root {
     --padding: 30px;
     --textShadow: 1px 1px 2px black;
-    --transition: all 0.2s ease-in-out;
+}
+
+body, html, #root {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    margin: 0;
     overflow-x: hidden;
     background: radial-gradient(ellipse at center, hsl(33,84%,88%) 0%, hsl(33,84%, 80%) 20%, hsl(33,84%,61%) 100%);
     /*radial-gradient( ellipse at 50% 50%, hsl(200, 100%, 40%), lightblue);*/
@@ -23,33 +28,32 @@ ul {
 }
 
 .wrapper {
-    min-height: 100vh;
-    width: 100vw;
+    height: 100%;
     padding: 0;
     margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    /*display: flex;
+    align-items: center;*/
 }
 
-.card {
-    box-shadow: 0 0 7px -1px black;
-    width: 90%;
+.Card {
+    width: 100%;
     max-width: 900px;
-    position: absolute;
+    transform: translateX(100%);
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     margin: auto;
     opacity: 0;
     pointer-events: none;
-    transition: var(--transition);
 }
 
-.card.active {
+.Card.active {
     opacity: 1;
+    transform: translateX(0%);
     pointer-events: all;
 }
 
-.card.done {
+.Card.done {
     transform-origin: 0 50%;
     animation: fly-away 0.5s ease-in;
 }
@@ -70,12 +74,13 @@ ul {
     color: goldenrod;
     flex: 0;
     font-size: 4em;
+    margin: 0 0 auto;
     padding: var(--padding);
     text-shadow: var(--textShadow);
 }
 
-.topic p {
-    transform: rotate(-90deg);
+.topic > p {
+    margin: 0;
 }
 
 .question {
@@ -84,6 +89,7 @@ ul {
     flex-direction: column;
     flex: 1;
     padding: var(--padding);
+    margin-bottom: auto;
 }
 
 .answer-item {
@@ -109,14 +115,4 @@ ul {
 }
 footer {
     height: 50px;
-}
-
-@media only screen and (max-width: 500px) {
-    .card {
-        flex-direction: column;
-    }
-    .topic p {
-        margin: 0;
-        transform: rotate(0);
-    }
 }
