@@ -3,6 +3,9 @@
 # vscode
 .vscode
 
+# chrome
+.chrome
+
 # dependencies
 /node_modules
 

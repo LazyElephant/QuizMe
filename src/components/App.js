@@ -20,34 +20,28 @@ export default class App extends Component{
     }
 
     handleSubmit() {
-      let card = this.state.currentCard + 1;
-      if( card === this.state.questions.length ) {
-        this.loadCards();
-      }
-      else {      
-        this.setState({
-          currentCard: card
-        });
-      }
-    }
-
-    getClass(index) { 
-        if(index > this.state.currentCard) return "";
-        else if (index === this.state.currentCard) return "active";
-        else return "done";    
+      let card = (this.state.currentCard + 1) % this.state.questions.length;;
+   
+      this.setState({
+        currentCard: card
+      });
     }
 
     render() {
-        return (
-          <div className="wrapper">
-              { this.state.questions.map( (question, index) => {
-                return <QuestionCard 
-                  handleSubmit={this.handleSubmit.bind(this)}
-                  className={this.getClass(index)}
-                  question={question}
-                  key={question._id}/>
-              })}
-          </div>
+      const currentQuestion = this.state.questions.length > 0 
+                           && this.state.questions[this.state.currentCard];
+
+      return (
+        <div className="container">
+            { 
+              currentQuestion ? 
+              <QuestionCard 
+                handleSubmit={this.handleSubmit.bind(this)}
+                question={currentQuestion}
+                key={currentQuestion.id}/> :
+              <p>No cards</p>
+            }
+        </div>
     );
   }
 }
