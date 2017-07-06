@@ -73,7 +73,7 @@ ul {
     }
 }*/
 
-.topic {
+.Topic {
     background: orangered;
     color: goldenrod;
     flex: 0;
@@ -83,11 +83,11 @@ ul {
     text-shadow: var(--textShadow);
 }
 
-.topic > p {
+.Topic > p {
     margin: 0;
 }
 
-.question {
+.Question {
     background: white;
     display: flex;
     flex-direction: column;
@@ -96,27 +96,24 @@ ul {
     margin-bottom: auto;
 }
 
-.answer-item {
+.Answer-item {
     padding: 10px var(--padding);
     cursor: default;
 }
 
-.answer-item[data-checked="true"] {
+.Answer-item[data-checked="true"] {
     background: orangered;
     text-shadow: 1p
 }
 
-.question > .submit {
+.submit {
     background: orangered;
     padding: 10px;
     color: white;
     text-shadow: var(--textShadow);
-    align-self: flex-end;
+    /*align-self: flex-end;*/
 }
 
-.question > .submit:disabled {
-    filter: blur(5px);
-}
 footer {
     height: 50px;
 }

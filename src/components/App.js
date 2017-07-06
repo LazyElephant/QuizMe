@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import {getCards} from '../helpers/data-access';
-import QuestionCard from './QuestionCard';
+import Card from './Card';
 
 export default class App extends Component{
     constructor(props, context) {
@@ -35,7 +35,7 @@ export default class App extends Component{
         <div className="wrapper">
             { 
               currentQuestion ? 
-              <QuestionCard 
+              <Card 
                 handleSubmit={this.handleSubmit.bind(this)}
                 question={currentQuestion}
                 key={currentQuestion.id}/> :

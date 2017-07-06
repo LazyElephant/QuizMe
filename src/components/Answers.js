@@ -1,6 +1,7 @@
 import React from 'react';
 import marked from 'marked';
-
+// TODO refactor to send changes through a callback to the Card.
+// the card will maintain state
 export class ShortAnswer extends React.Component {
     isCorrect() {
         if (this.props.answers.includes(this.answerRef.value)) return true;
@@ -68,4 +69,3 @@ export class MultipleChoice extends React.Component {
         );
     }
 }
-
