@@ -30,9 +30,9 @@ export default class App extends Component{
     render() {
       const currentQuestion = this.state.questions.length > 0 
                            && this.state.questions[this.state.currentCard];
-
+      
       return (
-        <div className="container">
+        <div className="wrapper">
             { 
               currentQuestion ? 
               <QuestionCard 

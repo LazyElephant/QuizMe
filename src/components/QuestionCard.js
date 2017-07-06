@@ -8,18 +8,29 @@ export default class QuestionCard extends React.Component {
         super(props);
 
         this.checkAnswers = this.checkAnswers.bind(this);
+
+        this.state = {
+            cardStateClass: 'mounted'
+        }
     }
     checkAnswers() {
-        if( this.answerComponent.isCorrect() )
-            this.props.handleSubmit();
+        if( this.answerComponent.isCorrect() ) {
+            this.setState({cardStateClass: 'done'}, this.props.handleSubmit);
+        }
     }
 
+    componentDidMount() {
+        debugger;
+        this.setState({
+            cardStateClass: 'active'
+        });
+    }
 
     render() {
-        const { question, className } = this.props;
+        const { question } = this.props;
         let text = marked(`### ${question.text}`, {sanitized: true});
         return (
-            <Card className={["Card", className].join(' ')}>
+            <Card className={`Card ${this.state.cardStateClass}`}>
                 <div className="topic">
                     <p>{question.topic}</p>
                 </div>
