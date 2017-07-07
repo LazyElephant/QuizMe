@@ -1,7 +1,6 @@
 import React from 'react';
 import Card from 'material-ui/Card';
 import Question from './Question';
-import marked from 'marked';
 // TODO:  create a callback to pass to the answer components to
 // check if the card is correctly answered
 
@@ -22,9 +21,9 @@ export default class QuestionCard extends React.Component {
     }
 
     componentDidMount() {
-        this.setState({
-            cardStateClass: 'active'
-        });
+        // setting state right away causes the card to appear with no animation
+        // apparently because of the mounting order (leaves to root)
+        requestAnimationFrame(() => this.setState({cardStateClass: 'active'}));
     }
 
     render() {
