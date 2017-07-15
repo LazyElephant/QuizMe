@@ -1,23 +1,25 @@
 import React, { Component } from 'react';
 
-import {getCards} from '../lib/data-access';
+import DB from '../lib/data-access';
 import Card from './Card';
 
 export default class App extends Component{
-    constructor(props, context) {
-      super(props,context);
-      this.state = { 
-        questions: [],
-        currentCard: 0 
-      };
-    }
-    
-    componentDidMount() {
-      const questions = getCards(10);
-      this.setState({
-        questions
-      });
-    }
+  constructor(props, context) {
+    super(props,context);
+    this.state = { 
+      questions: [],
+      currentCard: 0 
+    };
+  }
+  
+  componentDidMount() {
+    DB.open()
+      .then(() => DB.getCards(10))
+      .then(questions => {
+        this.setState({questions});
+      })
+      .catch( error => console.log(error));
+  }
 
     handleSubmit() {
       let card = (this.state.currentCard + 1) % this.state.questions.length;;
