@@ -81,8 +81,8 @@ export class MultipleChoice extends React.Component {
                         onClick={this.handleClick}
                         ref={(ref)=>this.answerRefs[index] = ref}
                         key={`${index}`}
-                        dangerouslySetInnerHTML={{__html:marked.inlineLexer(choice,[])}}>
-                    </li>)
+                        dangerouslySetInnerHTML={{__html:marked.inlineLexer(choice,[])}}
+                    ></li>)
             }
             </ol>
         );
