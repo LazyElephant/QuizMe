@@ -9,9 +9,9 @@ import './index.css';
 injectTapEventPlugin();
 
 const ThemedApp = () => (
-    <MuiThemeProvider>
-        <App />
-    </MuiThemeProvider>
+   <MuiThemeProvider>
+      <App />
+   </MuiThemeProvider>
 );
 
 ReactDOM.render(<ThemedApp />, document.getElementById('root'));
