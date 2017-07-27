@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import DB from '../lib/CardDB';
-import Card from './Card';
+import Card from '../components/Card';
 
 export default class App extends Component {
    constructor(props, context) {
