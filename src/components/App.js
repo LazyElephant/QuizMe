@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import DB from '../lib/data-access';
+import DB from '../lib/CardDB';
 import Card from './Card';
 
 export default class App extends Component{
