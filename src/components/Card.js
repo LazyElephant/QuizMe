@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from 'material-ui/Card';
 import Question from './Question';
+import './Card.css';
 // TODO:  create a callback to pass to the answer components to
 // check if the card is correctly answered
 

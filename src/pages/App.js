@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import DB from '../lib/CardDB';
 import Card from '../components/Card';
+import './App.css';
 
 export default class App extends Component {
    constructor(props, context) {
@@ -34,7 +35,7 @@ export default class App extends Component {
          && this.state.questions[this.state.currentCard];
 
       return (
-         <div className="wrapper">
+         <div className="App">
             {
                currentQuestion ?
                   <Card

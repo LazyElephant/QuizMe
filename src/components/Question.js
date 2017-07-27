@@ -1,6 +1,7 @@
 import React from 'react';
 import marked from 'marked';
 import { MultipleChoice, ShortAnswer } from './Answers';
+import './Question.css';
 
 const Question = ({ question, ...props }) => {
    const text = marked(`### ${question.text}`, { sanitized: true });

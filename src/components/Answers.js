@@ -1,5 +1,6 @@
 import React from 'react';
 import marked from 'marked';
+import './Answers.css';
 // TODO refactor to send changes through a callback to the Card.
 // the card will maintain state
 function mergeAndRandomizeArrays(first, second) {
