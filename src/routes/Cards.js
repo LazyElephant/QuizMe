@@ -3,9 +3,9 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
-import Cards from '../pages/Cards';
-import Create from '../pages/CardsCreate';
-import CardDetails from '../pages/CardDetails';
+import Cards from '../components/pages/Cards';
+import Create from '../components/pages/CardsCreate';
+import CardDetails from '../components/pages/CardDetails';
 
 const CardRoutes = () => (
   <Switch>

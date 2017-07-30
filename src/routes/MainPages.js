@@ -5,10 +5,10 @@ import {
    Switch,
    Route,
  } from 'react-router-dom';
-import Home from '../pages/Home';
-import About from '../pages/About';
-import Quiz from '../pages/Quiz';
-import NotFound from '../pages/404';
+import Home from '../components/pages/Home';
+import About from '../components/pages/About';
+import Quiz from '../components/pages/Quiz';
+import NotFound from '../components/pages/404';
 
  const Routes = () => (
     <BrowserRouter>

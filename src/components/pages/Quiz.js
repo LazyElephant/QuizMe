@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import DB from '../lib/CardDB';
-import Card from '../components/Card';
+import DB from '../../lib/CardDB';
+import Card from '../Card';
 import './Quiz.css';
 
 export default class Quiz extends Component {
