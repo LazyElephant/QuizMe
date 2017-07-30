@@ -1,5 +1,5 @@
-.Quiz {
-    height: 100%;
+.content {
+    min-height: calc(100vh - var(--navbarHeight));
     padding: 0;
     margin: 0;
     display: flex;

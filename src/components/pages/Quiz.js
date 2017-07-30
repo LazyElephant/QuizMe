@@ -35,7 +35,7 @@ export default class Quiz extends Component {
          && this.state.questions[this.state.currentCard];
 
     return (
-      <div className="Quiz">
+      <div className="content">
         {
           currentQuestion ?
             <Card
