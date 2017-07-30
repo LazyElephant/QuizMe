@@ -1,5 +1,4 @@
 import React from 'react';
-import Card from 'material-ui/Card';
 import Question from './Question';
 import './Card.css';
 // TODO:  create a callback to pass to the answer components to
@@ -15,6 +14,7 @@ export default class QuestionCard extends React.Component {
          cardStateClass: 'mounted'
       }
    }
+
    checkAnswers() {
       if (this.answerComponent.isCorrect()) {
          this.setState({ cardStateClass: 'done' }, this.props.handleSubmit);
@@ -30,14 +30,14 @@ export default class QuestionCard extends React.Component {
    render() {
       const { question } = this.props;
       return (
-         <Card className={`Card ${this.state.cardStateClass}`}>
+         <div className={`Card ${this.state.cardStateClass}`}>
             <Topic topic={question.topic} />
             <Question question={question} />
             <button
                className="submit"
                onClick={this.checkAnswers}>Next
-                </button>
-         </Card>
+            </button>
+         </div>
       );
    }
 }

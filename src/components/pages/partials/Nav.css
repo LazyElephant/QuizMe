@@ -1,0 +1,17 @@
+.Nav {
+  display: flex;
+  align-items: center;
+  height: var(--navbarHeight);
+  background: rebeccapurple;
+}
+
+.Nav-link {
+  padding: 10px 20px;
+  text-decoration: none;
+  color: white;
+  text-shadow: var(--textShadow);
+}
+
+.Nav-brand {
+  font-size: 2em;
+}
