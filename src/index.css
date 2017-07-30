@@ -3,7 +3,7 @@
     --textShadow: 1px 1px 2px black;
 }
 
-body, html, #root {
+body, html, #root, [data-reactroot] {
     height: 100%;
     width: 100%;
     margin: 0;

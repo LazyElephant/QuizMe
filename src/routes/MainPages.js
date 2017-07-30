@@ -1,7 +1,6 @@
 import React from 'react';
 import CardRoutes from './Cards';
 import { 
-   BrowserRouter,
    Switch,
    Route,
  } from 'react-router-dom';
@@ -11,7 +10,6 @@ import Quiz from '../components/pages/Quiz';
 import NotFound from '../components/pages/404';
 
  const Routes = () => (
-    <BrowserRouter>
       <Switch>
          <Route exact path="/" component={Home} />
          <Route path="/cards" component={CardRoutes} />
@@ -19,7 +17,6 @@ import NotFound from '../components/pages/404';
          <Route exact path="/quiz-me" component={Quiz} />
          <Route component={NotFound} />
       </Switch>
-    </BrowserRouter>
  );
  
  export default Routes;
