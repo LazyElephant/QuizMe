@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import DB from '../../lib/CardDB';
-import Card from '../Card';
+import CardRepository from '../lib/CardRepository';
+import Card from '../components/Card';
 import './Quiz.css';
 
 export default class Quiz extends Component {
@@ -13,8 +13,8 @@ export default class Quiz extends Component {
   }
 
   componentDidMount() {
-    DB.open()
-      .then(() => DB.getCards(10))
+    CardRepository.open()
+      .then(() => CardRepository.getCards(10))
       .then((questions) => {
         this.setState({ 
           questions,

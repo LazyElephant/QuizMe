@@ -4,9 +4,9 @@ import {
    Switch,
    Route,
  } from 'react-router-dom';
-import Home from '../components/pages/Home';
-import Quiz from '../components/pages/Quiz';
-import NotFound from '../components/pages/404';
+import Quiz from '../containers/Quiz';
+import Home from '../containers/Home';
+import NotFound from '../containers/404';
 
  const Routes = () => (
       <Switch>
