@@ -4,14 +4,6 @@
 }
 
 .Answer-item[data-checked="true"] {
-    background: orangered;
+    background: var(--secondaryColor);
     text-shadow: 1p
-}
-
-.submit {
-    background: orangered;
-    padding: 10px;
-    color: white;
-    text-shadow: var(--textShadow);
-    /*align-self: flex-end;*/
 }

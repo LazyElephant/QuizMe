@@ -7,9 +7,6 @@
 
 .Nav-link {
   padding: 10px 20px;
-  text-decoration: none;
-  color: white;
-  text-shadow: var(--textShadow);
 }
 
 .Nav-brand {
