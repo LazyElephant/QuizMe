@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import ReactTransitionGroup from 'react-addons-transition-group';
 
 import { 
   BrowserRouter,
@@ -19,13 +20,6 @@ class ThemedApp extends Component {
     }
   }
 
-  toggleDrawer = () => this.setState({
-    drawerOpen: !this.state.drawerOpen
-  });
-  
-  closeDrawer = () => this.setState({
-    drawerOpen: false
-  });
   render () {
     return (
       <BrowserRouter>
