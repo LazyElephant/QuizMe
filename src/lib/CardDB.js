@@ -54,7 +54,7 @@ class DB {
             let cursor = event.target.result;
 
             if (cursor && numToTake > questions.length) {
-               questions.push(cursor.value);
+               questions.push({id: cursor.primaryKey, ...cursor.value});
                cursor.continue();
             } else {
                resolve(questions);

@@ -6,3 +6,30 @@
     align-items: center;
     justify-content: center;
 }
+
+.anchor {
+    position: relative;
+    width: 100%;
+    max-width: 720px;
+    height: 720px;
+}
+
+.card-enter {
+    opacity: 0;
+    transform: translateX(100vw);
+}
+
+.card-enter.card-enter-active {
+    opacity: 1;
+    transform: translateX(0%);
+}
+
+.card-leave {
+    opacity: 1;
+    transform: translateX(0%);
+}
+
+.card-leave.card-leave-active {
+    opacity: 0;
+    transform: translateX(-100vw)
+}
