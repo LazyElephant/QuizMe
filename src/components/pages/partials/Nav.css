@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   height: var(--navbarHeight);
-  background: rebeccapurple;
+  background: var(--primaryColor);
 }
 
 .Nav-link {

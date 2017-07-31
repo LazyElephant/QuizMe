@@ -10,6 +10,7 @@
   background: url('../../images/hero-bg.jpg') center center/cover;
   color: white;
   text-shadow: var(--textShadow);
+  box-shadow: 0 0 10px -2px black;
 } 
 
 .Author {
@@ -32,4 +33,10 @@
 
 .cta:hover, .cta:focus {
   transform: scale(1.2);
+}
+
+.cta:focus {
+  outline: none;
+  /* border: 1px solid yellow; */
+  box-shadow: 0 0 10px 4px yellow;
 }
