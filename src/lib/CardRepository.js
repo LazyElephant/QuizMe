@@ -48,7 +48,8 @@ class CardRepository {
       this._open()
         .then(() => {
           let questions = [];
-          let objectStore = this._db.transaction("questions").objectStore("questions");
+          let transaction = this._db.transaction("questions", IDBTransaction.READ_ONLY);
+          let objectStore = transaction.objectStore("questions");
           let index = objectStore.index('showAfter');
 
           index.openCursor().onsuccess = (event) => {
@@ -57,9 +58,11 @@ class CardRepository {
             if (cursor && numToTake > questions.length) {
               questions.push({ id: cursor.primaryKey, ...cursor.value });
               cursor.continue();
-            } else {
-              resolve(questions);
             }
+          }
+
+          transaction.oncomplete = (event) => {
+            resolve(questions);
           }
         })
     });
