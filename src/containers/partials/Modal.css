@@ -10,8 +10,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
 
   background: hsla(0,0%,0%,0.9);
@@ -26,6 +26,7 @@
 
 .Modal.open {
   opacity: 1;
+  visibility: visible;
   pointer-events: all;
 }
 

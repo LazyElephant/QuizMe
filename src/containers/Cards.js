@@ -10,7 +10,7 @@ class Cards extends Component {
 
     this.state = {
       cards: [],
-      modalOpen: true
+      modalOpen: false
     }
   }
 
@@ -31,30 +31,42 @@ class Cards extends Component {
 
     return (
       <div className='container' aria-hidden={!modalOpen} >
+        <table>
+          <thead>
+            <tr>
+              <th>Question</th>
+              <th>Answers</th>
+              <th>Choices</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              cards.map( (card) => {
+                return (
+                  <tr key={card.id}>
+                    <td>{card.text}</td>
+                    <td>
+                      { card.answers.map( (answer, index) => <p key={index}>{answer}</p>)}
+                    </td>
+                    { card.choices ? 
+                      <td>
+                        { card.choices.map( (choice, index) => <p key={index}>{choice}</p>)}
+                      </td> :
+                      <td></td>
+                    }
+                  </tr> 
+                )
+              })
+            }
+          </tbody>
+        </table>
         <button type='button' 
           className="floating-button" 
           onClick={this.toggleModal}
           >New Card
         </button>
-        {
-          cards.map( (card) => {
-            return (
-              <div key={card.id}>
-                <p>{card.text}</p>
-                <ul>Correct Answer
-                  { card.answers.map( (answer, index) => <li key={index}>{answer}</li>)}
-                </ul>
-                { card.choices && 
-                  <ul>Wrong Choices
-                    { card.choices.map( (choice, index) => <li key={index}>{choice}</li>)}
-                  </ul>
-                }
-              </div> 
-            )
-          })
-        }
         <Modal open={modalOpen} closeModal={this.toggleModal}>
-          <CardForm />
+          <CardForm cancel={this.toggleModal} />
         </Modal>
       </div>
     )

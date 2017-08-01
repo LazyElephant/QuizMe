@@ -19,20 +19,26 @@ class CardForm extends Component {
       [field]: newCount
     });
   }
+
   handleSubmit(e) {
     e.preventDefault();
   }
+
   render() {
-    const { numAnswers, numChoices } = this.state;
+    const { AnswerCount, ChoiceCount } = this.state;
 
     return (
       <form onSubmit={this.handleSubmit} className="CardForm">
-        <label htmlFor='text'>
-          <input autofocus required type='text' name='text' />
-        </label>
-        <MultipleInput count={numAnswers} name="answers[]" add={this.addAnswerField} />
-        <MultipleInput count={numChoices} name="choices[]" add={this.addChoiceField} />
-        <button type='submit'>Add</button>
+        <div className="CardForm-group">
+          <label htmlFor='text' className="CardForm-label" >Question</label>
+          <textarea rows={4} className="CardForm-input" required type='text' name='text' id='text' />
+        </div>
+        <MultipleInput count={AnswerCount} displayName="Answer" name="answers[]" add={this.addAnswerField} />
+        <MultipleInput count={ChoiceCount} displayName="Choice" name="choices[]" add={this.addChoiceField} />
+        <div className="CardForm-buttons" >
+          <button type='submit'>Add</button>
+          <button type='button' onClick={this.props.cancel} >Cancel</button>
+        </div>
       </form>
     );
   }
@@ -40,16 +46,15 @@ class CardForm extends Component {
 
 export default CardForm;
 
-const MultipleInput = ({add, name, count}) => {
+const MultipleInput = ({add, displayName, name, count}) => {
+  const elements = new Array(count).fill(0);
   
   return (
-    <label htmlFor='text'>
-      {
-        
-        <input type='text' name placeholder='Wrong Choice' />
-
-      }
-      <span onClick={add}>+</span>
-    </label>
+    <div className="CardForm-group">
+      <label htmlFor='text' className="CardForm-label">{displayName}</label>
+      {elements.map( (value, index) => (
+        <input key={index} className="CardForm-input" type='text' name={name} />))}
+      <button type='button' onClick={add}>+</button>
+    </div>
   );
 }
