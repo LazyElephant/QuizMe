@@ -10,15 +10,7 @@ import Nav from './components/pages/partials/Nav';
 import Routes from './routes/MainPages';
 import './index.css';
 
-class ThemedApp extends Component {
-  constructor () {
-    super();
-
-    this.state = {
-      drawerOpen: false
-    }
-  }
-
+class QuizMe extends Component {
   render () {
     return (
       <BrowserRouter>
@@ -31,5 +23,5 @@ class ThemedApp extends Component {
   }
 }
 
-ReactDOM.render(<ThemedApp />, document.getElementById('root'));
+ReactDOM.render(<QuizMe />, document.getElementById('root'));
 registerServiceWorker();
