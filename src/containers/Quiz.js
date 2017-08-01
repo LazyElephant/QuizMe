@@ -13,8 +13,7 @@ export default class Quiz extends Component {
   }
 
   componentDidMount() {
-    CardRepository.open()
-      .then(() => CardRepository.getCards(10))
+    CardRepository.getCards(10)
       .then((questions) => {
         this.setState({ 
           questions,

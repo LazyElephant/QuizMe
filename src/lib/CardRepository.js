@@ -5,27 +5,28 @@
 class CardRepository {
   constructor() {
     this._db = null;
-
-    this._promiseToOpen = this._promiseToOpen.bind(this);
   }
 
-  open() {
-    return new Promise(this._promiseToOpen);
-  }
+  _open = () => {
+    return new Promise((resolve, reject) => {
+      if (this._db) resolve({ status: 'success' });
 
-  _promiseToOpen(resolve, reject) {
-    let openRequest = window.indexedDB.open('QuizMe', 2);
-    openRequest.onsuccess = (event) => {
-      this._db = event.target.result;
-      this._db.onerror = (event) => {
-        console.log(event.target.errorCode);
+      let openRequest = window.indexedDB.open('QuizMe', 2);
+      
+      openRequest.onsuccess = (event) => {
+        this._db = event.target.result;
+        this._db.onerror = (event) => {
+          console.log(event.target.errorCode);
+        }
+        resolve({ status: 'success' });
       }
-      resolve({ status: 'success' });
-    }
-    openRequest.onerror = (event) => {
-      reject({ status: 'error', error: event });
-    }
-    openRequest.onupgradeneeded = this._handleUpgrade;
+      
+      openRequest.onerror = (event) => {
+        reject({ status: 'error', error: event });
+      }
+      
+      openRequest.onupgradeneeded = this._handleUpgrade;
+    });
   }
 
   _handleUpgrade(event) {
@@ -42,29 +43,30 @@ class CardRepository {
 
   }
 
-  getCards(numToTake = 1) {
+  getCards = (numToTake = 10) => {
     return new Promise((resolve, reject) => {
-      if (!this._db) reject({ error: "Database doesn't exist" });
+      this._open()
+        .then(() => {
+          let questions = [];
+          let objectStore = this._db.transaction("questions").objectStore("questions");
+          let index = objectStore.index('showAfter');
 
-      let questions = [];
-      let objectStore = this._db.transaction("questions").objectStore("questions");
-      let index = objectStore.index('showAfter');
+          index.openCursor().onsuccess = (event) => {
+            let cursor = event.target.result;
 
-      index.openCursor().onsuccess = (event) => {
-        let cursor = event.target.result;
-
-        if (cursor && numToTake > questions.length) {
-          questions.push({ id: cursor.primaryKey, ...cursor.value });
-          cursor.continue();
-        } else {
-          resolve(questions);
-        }
-      }
+            if (cursor && numToTake > questions.length) {
+              questions.push({ id: cursor.primaryKey, ...cursor.value });
+              cursor.continue();
+            } else {
+              resolve(questions);
+            }
+          }
+        })
     });
   }
 }
 
-const _cardRepository = _cardRepository || new CardRepository();
+const _cardRepository = new CardRepository();
 
 export default _cardRepository;
 
