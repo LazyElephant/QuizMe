@@ -4,7 +4,7 @@ import {
   Route
 } from 'react-router-dom';
 import Cards from '../containers/Cards';
-import Create from '../containers/CardsCreate';
+import Create from '../containers/NewCard';
 
 const CardRoutes = () => (
   <Switch>

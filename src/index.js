@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 
 import registerServiceWorker from './registerServiceWorker';
-import Nav from './components/pages/partials/Nav';
+import Nav from './containers/partials/Nav';
 import Routes from './routes/MainPages';
 import './index.css';
 
