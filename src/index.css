@@ -3,7 +3,9 @@
     --textShadow: 1px 1px 2px #333;
     --navbarHeight: 57px;
     --primaryColor: rebeccapurple;
+    --primaryHighlight: purple;
     --secondaryColor: gold;
+    --secondaryHighlight: yellow;
     --backgroundColor: #f3f3f3;
 }
 
