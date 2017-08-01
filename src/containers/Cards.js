@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import Modal from './partials/Modal';
+import CardForm from './partials/CardForm';
 import CardRepository from '../lib/CardRepository';
 import './Cards.css';
 
@@ -8,7 +9,8 @@ class Cards extends Component {
     super(props);
 
     this.state = {
-      cards: []
+      cards: [],
+      modalOpen: true
     }
   }
 
@@ -19,12 +21,21 @@ class Cards extends Component {
       .catch((error) => console.log(error))
   }
 
+  toggleModal = (event) => {
+    const modalOpen = !this.state.modalOpen; 
+    this.setState({ modalOpen });
+  }
+
   render() {
-    const { cards } = this.state;
+    const { cards, modalOpen } = this.state;
 
     return (
-      <div className='container' >
-        <Link to="/cards/create" className="floating-button">New Card</Link>
+      <div className='container' aria-hidden={!modalOpen} >
+        <button type='button' 
+          className="floating-button" 
+          onClick={this.toggleModal}
+          >New Card
+        </button>
         {
           cards.map( (card) => {
             return (
@@ -42,6 +53,9 @@ class Cards extends Component {
             )
           })
         }
+        <Modal open={modalOpen} closeModal={this.toggleModal}>
+          <CardForm />
+        </Modal>
       </div>
     )
   }
