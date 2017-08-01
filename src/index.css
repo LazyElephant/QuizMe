@@ -1,0 +1,35 @@
+:root {
+    --padding: 20px;
+    --textShadow: 1px 1px 2px #333;
+    --navbarHeight: 57px;
+    --primaryColor: rebeccapurple;
+    --primaryHighlight: purple;
+    --secondaryColor: gold;
+    --secondaryHighlight: yellow;
+    --backgroundColor: #f3f3f3;
+}
+
+
+body, html, #root, [data-reactroot] {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow-x: hidden;
+    background-color: var(--backgroundColor);
+    /* background: radial-gradient(ellipse at center, hsl(33,84%,88%) 0%, hsl(33,84%, 80%) 20%, hsl(33,84%,61%) 100%); */
+    /*radial-gradient( ellipse at 50% 50%, hsl(200, 100%, 40%), lightblue);*/
+}
+
+ul {
+    padding-left: 0;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    text-shadow: var(--textShadow);
+}

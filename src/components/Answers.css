@@ -1,0 +1,9 @@
+.Answer-item {
+    padding: 10px var(--padding);
+    cursor: default;
+}
+
+.Answer-item[data-checked="true"] {
+    background: var(--secondaryColor);
+    text-shadow: 1p
+}
