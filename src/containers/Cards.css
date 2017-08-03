@@ -9,7 +9,7 @@ table {
 th, td {
   text-align: left;
   padding: 20px 30px;
-  width: 25%;
+  width: 30%;
 }
 tbody tr:nth-child(odd) {
   background-color: white;
@@ -18,6 +18,32 @@ tbody tr:nth-child(odd) {
 td {
   vertical-align: top;
   border-top: 1px solid black;
+}
+
+td.delete-icon {
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 10%;
+}
+
+.delete-icon svg {
+  transform: scale(1.5);
+}
+
+.delete-icon svg > circle {
+  fill: white;
+  transition: all 100ms ease-in-out;
+}
+
+.delete-icon svg:hover > circle {
+  fill: red;
+}
+.delete-icon svg > path {
+  stroke: black;
+  transition: all 100ms ease-in-out;
+}
+.delete-icon svg:hover > path {
+  stroke: white;
 }
 
 .floating-button {

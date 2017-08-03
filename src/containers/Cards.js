@@ -31,7 +31,7 @@ class Cards extends Component {
 
     return (
       <div className='container' aria-hidden={!modalOpen} >
-        <table>
+        <table className="Cards-table">
           <thead>
             <tr>
               <th>Question</th>
@@ -51,9 +51,14 @@ class Cards extends Component {
                     { card.choices ? 
                       <td>
                         { card.choices.map( (choice, index) => <p key={index}>{choice}</p>)}
-                      </td> :
-                      <td></td>
+                      </td> : <td></td>
                     }
+                    <td className="delete-icon">
+                      <svg viewBox="0 0 20 20" height="20" width="20">
+                        <circle fill="red" stroke="red" r="9" cx="10" cy="10" />
+                        <path stroke="white" d="M6,6 L15,15 M15,6 L6,15" />
+                      </svg>
+                    </td>
                   </tr> 
                 )
               })
